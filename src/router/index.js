@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomePage from "@/components/HomePage.vue";
 import ProjectsInfo from "@/components/ProjectsInfo.vue";
 import AboutMe from "@/components/AboutMe.vue";
+import ProjectDetail from "@/components/ProjectDetail.vue";
 const routes = [
     {
         path:'/',
@@ -19,6 +20,12 @@ const routes = [
         path:"/about",
         name:"aboutMe",
         component: AboutMe
+    },
+    {
+        path:"/projects/:projectId",
+        name:"projectDetail",
+        component:ProjectDetail,
+        props: true
     }
 ]
 
