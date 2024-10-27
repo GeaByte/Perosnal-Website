@@ -1,14 +1,10 @@
 <template>
-    <NavBar />
-    <FooterSection />
+    <div></div>
 </template>
 
 <script>
-import NavBar from './NavBar.vue';
-import FooterSection from './FooterSection.vue';
 
 export default {
-    components: { NavBar, FooterSection },
     name: "homePage",
         data(){
         return{

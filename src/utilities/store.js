@@ -1,5 +1,5 @@
 import { createStore } from "vuex"
-
+// import test from "../assets/test.jpeg"
 const store = new createStore({
   state() {
     return {
@@ -8,32 +8,32 @@ const store = new createStore({
           id: 0,
           title: "Project Title 1",
           content: "content 1",
-          imgSrc: ["image1", "", ""],
+          imgSrc: ["test.jpeg", "", ""],
 
         },
         {
           id: 1,
           title: "Project Title 2",
           content: "content 2",
-          imgSrc: ["image2", "", ""],
+          imgSrc: ["test.jpeg", "", ""],
         },
         {
           id: 2,
           title: "Project Title 3",
           content: "content 3",
-          imgSrc: ["image3", "", ""],
+          imgSrc: ["test.jpeg", "", ""],
         },
         {
           id: 3,
           title: "Project Title 4",
           content: "content 4",
-          imgSrc: ["image4", "", ""],
+          imgSrc: ["test.jpeg", "", ""],
         },
         {
           id: 4,
           title: "Project Title 5",
           content: "content 5",
-          imgSrc: ["image5", "", ""],
+          imgSrc: ["test.jpeg", "", ""],
         },
       ],
     }

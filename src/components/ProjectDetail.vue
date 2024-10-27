@@ -1,35 +1,35 @@
 <template>
-    <nav-bar />
     <div v-if="project">
-        <b>Project Detail: {{ this.project.title }}</b><br />
+        <b>Project Detail: {{ project.title }}</b><br />
         <button @click="navigateToPrev(project.id)">prev</button>
         <button @click="navigateToNext(project.id)">next</button>
     </div>
     <div v-else>
         <h1>Project Not Found</h1>
     </div>
-    <footer-section />
 </template>
 
 <script>
-import NavBar from "./NavBar.vue";
-import FooterSection from "./FooterSection.vue"
 import { useStore } from "vuex"
 import { computed } from "vue"
-import { useRoute, useRouter } from "vue-router"
+import { useRoute } from "vue-router"
+import router from "@/router";
 export default {
     name: "projectDetail",
-    components: { NavBar, FooterSection },
+    props:{
+        projectId:{
+            type: Number,
+            required: true,
+        },
+    },
     setup() {
         const store = useStore();
         const route = useRoute();
-        const router = useRouter();
         const projects = computed(()=> {
             return store.getters.allProjects;
         });
         const project = computed(() => {
-            const projectId = Number(route.params.projectId);
-            return store.getters.getProjectById(projectId);
+            return store.getters.getProjectById(Number(route.params.projectId));
         });
         const navigateToNext = (id) => {
             let currentId = Number(id);
@@ -48,7 +48,7 @@ export default {
             });
         }
         return {
-            project, navigateToNext, navigateToPrev
+            project, projects, navigateToNext, navigateToPrev
         };
     },
 };
