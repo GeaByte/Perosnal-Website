@@ -16,6 +16,9 @@ export default{
 };
 </script>
 
-<style>
-
+<style scoped>
+    footer{
+        margin:auto;
+        text-align:center;
+    }
 </style>

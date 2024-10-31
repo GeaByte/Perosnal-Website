@@ -10,7 +10,7 @@
             <b-nav-item-dropdown text="Projects" @click="navigateToNext('projectsInfo')">
                 <b-dropdown-item v-for="(project, index) in projects" :key="index">{{ project.title }}</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item @click="navigateToNext('aboutMe')"> About Me</b-nav-item>
+            <b-nav-item @click="navigateToNext('aboutMe')"> About</b-nav-item>
         </b-navbar-nav>
     </b-navbar>
 </template>
