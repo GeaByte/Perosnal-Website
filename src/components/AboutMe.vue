@@ -47,11 +47,7 @@
 
     </div>
 </template>
-<script>
-
-export default {
-    name: "aboutMe",
-}
+<script setup>
 </script>
 
 <style>
