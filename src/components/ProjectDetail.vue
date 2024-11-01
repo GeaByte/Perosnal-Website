@@ -3,15 +3,15 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div v-for="(imgSrc, index) in project.imgSrc" :key="index" class="carousel-item"
-                    :class="{ active: index === 0 }">
+                     :class="{ active: index === currentIndex }">
                     <img :src="require(`@/assets/${imgSrc}`)" class="d-block w-100" alt="image">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" @click="prevImage">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" @click="nextImage">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -34,48 +34,63 @@
 
 <script setup>
 import { useStore } from "vuex"
-import { computed } from "vue"
+import { computed, ref, watch } from "vue"
 import router from "@/router";
 
-const props = defineProps(['projectId'])
-console.log(props.projectId)
+const props = defineProps(['projectId']);
 const store = useStore();
 
-const projects = computed(() => {
-    return store.getters.allProjects;
-});
-const project = computed(() => {
-    return store.getters.getProjectById(Number(props.projectId));
-});
+const projects = computed(() => store.getters.allProjects);
+const project = computed(() => store.getters.getProjectById(Number(props.projectId)));
+const currentIndex = ref(0);
+
+//split project description by '/n'
 const description = () => {
     if (project.value && project.value.content) {
         return project.value.content.split('\n');
     }
     return [];
 }
+
+// Navigate to the next project
 const navigateToNext = (id) => {
     let currentId = Number(id);
     let nextId = (currentId + 1) % projects.value.length;
-    router.push({
-        name: "projectDetail",
-        params: { projectId: nextId }
-    });
+    router.push({ name: "projectDetail", params: { projectId: nextId } });
 }
+
+// Navigate to the previous project
 const navigateToPrev = (id) => {
     let currentId = Number(id);
     let prevId = (currentId - 1 + projects.value.length) % projects.value.length;
-    router.push({
-        name: "projectDetail",
-        params: { projectId: prevId }
-    });
+    router.push({ name: "projectDetail", params: { projectId: prevId } });
+}
+
+// Reset currentIndex when project changes
+watch(project, (newProject) => {
+    if (newProject) {
+        currentIndex.value = 0; // Reset to first image when project changes
+    }
+});
+
+// Carousel navigation methods
+const prevImage = () => {
+    if (currentIndex.value > 0) {
+        currentIndex.value--;
+    }
+}
+
+const nextImage = () => {
+    if (currentIndex.value < project.value.imgSrc.length - 1) {
+        currentIndex.value++;
+    }
 }
 </script>
 
 <style>
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: black;
-    /* Change the background color to black */
+    background-color: black; /* Change the background color to black */
 }
 
 .carousel-item {
