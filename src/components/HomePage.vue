@@ -15,7 +15,7 @@
                 <b-card title="About Me" img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top
                     tag="article" class="mb-2 myCard">
                     <b-card-text>
-                        I'm a student enrolled in a two-year program in Computer and Information Systems.
+                        Currently, enrolled in a two-year program in Computer and Information Systems.
                     </b-card-text>
                     <div class="d-flex justify-content-end">
                         <b-button variant="outline-primary" size="sm" @click="navigateTo('aboutMe')"

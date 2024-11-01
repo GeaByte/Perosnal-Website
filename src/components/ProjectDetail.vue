@@ -20,7 +20,7 @@
         <div class="projectDescription">
             <h3>{{ project.title }}</h3><br />
             <h4>Description: </h4>
-            <p>{{ project.content }}</p>
+            <p v-for="(paragraph, index) in description()" :key="index">{{ paragraph }}</p>
             <div class="d-flex justify-content-end">
                 <b-button variant="light" size="lg" class="m-2" @click="navigateToPrev(project.id)">PREV</b-button>
                 <b-button variant="dark" size="lg" class="m-2" @click="navigateToNext(project.id)">NEXT</b-button>
@@ -47,7 +47,12 @@ const projects = computed(() => {
 const project = computed(() => {
     return store.getters.getProjectById(Number(props.projectId));
 });
-
+const description = () => {
+    if (project.value && project.value.content) {
+        return project.value.content.split('\n');
+    }
+    return [];
+}
 const navigateToNext = (id) => {
     let currentId = Number(id);
     let nextId = (currentId + 1) % projects.value.length;
