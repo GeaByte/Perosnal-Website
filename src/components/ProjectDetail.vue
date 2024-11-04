@@ -3,15 +3,20 @@
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div v-for="(imgSrc, index) in project.imgSrc" :key="index" class="carousel-item"
-                     :class="{ active: index === currentIndex }">
-                    <img :src="require(`@/assets/${imgSrc}`)" class="d-block w-100" alt="image">
+                    :class="{ active: index === currentIndex }">
+                    <img :src="require(`@/assets/${imgSrc}`)" class="d-block " alt="image">
+                    <div class="carousel-caption d-none d-md-block text-white">
+                        <p v-html="project.imgCaption[index]" class="bg-caption d-inline"></p>
+                    </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" @click="prevImage">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+                @click="prevImage">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" @click="nextImage">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+                @click="nextImage">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -87,19 +92,30 @@ const nextImage = () => {
 }
 </script>
 
-<style>
+<style scoped>
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: black; /* Change the background color to black */
+    background-color: black;
+    /* Change the background color to black */
 }
 
 .carousel-item {
     width: 100%;
-    height: 40rem;
+    height: 30rem;
 }
 
 .projectDescription {
     margin: auto;
     width: 80%;
+}
+
+img {
+    width: 80%;
+    height: auto;
+    max-height: 100%;
+    margin: auto;
+}
+.bg-caption{
+    background-color: rgba(0, 0, 0, 0.5);
 }
 </style>

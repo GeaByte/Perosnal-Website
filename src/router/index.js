@@ -3,6 +3,7 @@ import HomePage from "@/components/HomePage.vue";
 import ProjectsInfo from "@/components/ProjectsInfo.vue";
 import AboutMe from "@/components/AboutMe.vue";
 import ProjectDetail from "@/components/ProjectDetail.vue";
+import NotFound from "@/components/NotFound.vue";
 const routes = [
     {
         path:'/',
@@ -25,6 +26,11 @@ const routes = [
         name:"projectDetail",
         component:ProjectDetail,
         props: true
+    },
+    {
+        path:"/:catchAll(.*)",
+        name:"notFound",
+        component:NotFound
     }
 ]
 

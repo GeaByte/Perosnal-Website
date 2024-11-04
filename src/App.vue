@@ -23,4 +23,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+.shadow:hover{
+    transform: scale(1.01);
+    box-shadow: 0 10px 15px rgba(255, 140, 0, 0.5) !important;
+}
+img {
+    width: 40%;
+    height: 15rem;
+}
 </style>

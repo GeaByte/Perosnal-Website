@@ -1,5 +1,5 @@
 <template>
-    <b-navbar toggleable="lg" light>
+    <b-navbar class="mb-3" toggleable="lg" light style="background-color: #FF8C00">
         <b-navbar-brand class="mx-auto" @click="navigateTo('homePage')">
             <h1 class="title">Raymond Portfolio</h1>
         </b-navbar-brand>
@@ -16,8 +16,7 @@ const navigateTo = (page) => {
 
 <style>
 .title:hover {
-    background-color: grey;
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 </style>
