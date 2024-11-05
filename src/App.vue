@@ -30,5 +30,6 @@ export default {
 img {
     width: 40%;
     height: 15rem;
+    object-fit: contain;
 }
 </style>

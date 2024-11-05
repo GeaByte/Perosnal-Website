@@ -1,11 +1,9 @@
 <template>
     <footer class="bg-dark text-white p-3">
         <div class="container">
-            Copyright {{ currentYear }}
-            <p>created by Raymond using Vue</p>
-            <small>Please note that this is a static website, meaning it does not involve a backend or database.
-            For this project, I utilized various packages,
-            including Bootstrap for responsive design and styling, ensuring a smooth user experience.</small>
+            <p>&copy; {{ currentYear }} Raymond. All rights reserved.</p>
+            <p>Website created and developed by <strong>Raymond</strong></p>
+            <small>Built with Vue.js and Bootstrap for a responsive, static web experience.</small>
         </div>
     </footer>
 </template>

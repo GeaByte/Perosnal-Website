@@ -25,7 +25,7 @@
         <div class="projectDescription">
             <h3>{{ project.title }}</h3><br />
             <h4>Description: </h4>
-            <p v-for="(paragraph, index) in description()" :key="index">{{ paragraph }}</p>
+            <p v-for="(paragraph, index) in description()" :key="index" v-html="paragraph"></p>
             <div class="d-flex justify-content-end">
                 <b-button variant="light" size="lg" class="m-2" @click="navigateToPrev(project.id)">PREV</b-button>
                 <b-button variant="dark" size="lg" class="m-2" @click="navigateToNext(project.id)">NEXT</b-button>

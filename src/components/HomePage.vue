@@ -7,7 +7,12 @@
         <div class="row">
             <!-- left side -->
             <div class="col-md-8 bg-light p-4">
-                <ProjectPreview v-for="(project) in projects" :key="project.id" :project="project"/>
+                <h3>Side Projects:</h3>
+                <ProjectPreview v-for="(project) in sideProjects" :key="project.id" :project="project"/>
+                <hr />
+                <h3>Course Projects:</h3>
+                <ProjectPreview v-for="(project) in courseProjects" :key="project.id" :project="project"/>
+                <hr />
             </div>
             <!-- right side -->
             <div class="col-md-4 bg-about-me p-4">
@@ -44,6 +49,8 @@ const projects = store.getters.allProjects;
 const techs = new Set(
     projects.flatMap(project => project.technology
     ));
+const sideProjects = projects.filter(p => p.category === "sideProject");
+const courseProjects = projects.filter(p => p.category === "courseProject");
 const navigateTo = (page) => {
     router.push({ name: page });
 }
