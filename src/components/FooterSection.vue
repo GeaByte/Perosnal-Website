@@ -8,7 +8,7 @@
         </div>
         <div class="footer-links">
           <a href="https://github.com/GeaByte" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://linkedin.com/in/raymond-wang-bc" target="_blank" rel="noopener">LinkedIn</a>
         </div>
         <p class="footer-copy">&copy; {{ year }} Raymond. All rights reserved.</p>
       </div>
