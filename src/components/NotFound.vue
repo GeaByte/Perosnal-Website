@@ -1,19 +1,35 @@
 <template>
-    <div class="d-flex flex-column min-vh-100">
-      <div class="container text-center flex-grow-1 mt-5">
-        <h1 class="display-4">404 - Page Not Found</h1>
-        <p class="lead">The page you are looking for does not exist.</p>
-        <p>Check the URL or try searching for what you need.</p>
-        <router-link class="btn btn-primary" to="/">Go to Home</router-link>
-      </div>
+  <div class="not-found-page">
+    <div class="container-main">
+      <span class="section-label">Error</span>
+      <h1 class="nf-title">404</h1>
+      <p class="nf-sub">This page doesn't exist.</p>
+      <router-link class="btn-primary-custom" to="/">← Back to Home</router-link>
     </div>
-  </template>
-  
-  <script setup>
-  // Your script logic (if needed) can go here
-  </script>
-  
-  <style>
-  /* Add any additional styles here, if necessary */
-  </style>
-  
+  </div>
+</template>
+
+<script>
+export default { name: 'NotFound' };
+</script>
+
+<style scoped>
+.not-found-page {
+  padding-top: 14rem;
+  text-align: center;
+}
+.nf-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 10rem);
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.nf-sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+</style>

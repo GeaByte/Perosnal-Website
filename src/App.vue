@@ -1,35 +1,38 @@
 <template>
   <div id="app">
-    <nav-bar />
-    <router-view/>
-    <footer-section />
+    <NavBar />
+    <main>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+    <FooterSection />
   </div>
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue";
-import FooterSection from "./components/FooterSection.vue"
+import NavBar from './components/NavBar.vue';
+import FooterSection from './components/FooterSection.vue';
 
 export default {
   name: 'App',
   components: { NavBar, FooterSection },
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.shadow:hover{
-    transform: scale(1.01);
-    box-shadow: 0 10px 15px rgba(255, 140, 0, 0.5) !important;
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
 }
-img {
-    width: 40%;
-    height: 15rem;
-    object-fit: contain;
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 </style>
